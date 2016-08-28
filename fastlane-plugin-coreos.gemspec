@@ -9,8 +9,8 @@ Gem::Specification.new do |spec|
   spec.author        = %q{Oliver Letterer}
   spec.email         = %q{oliver.letterer@gmail.com}
 
-  spec.summary       = %q{Deploys docker services to CoreOS hosts.}
-  # spec.homepage      = "https://github.com/<GITHUB_USERNAME>/fastlane-plugin-coreos"
+  spec.summary       = %q{Deploy docker services to CoreOS hosts}
+  spec.homepage      = "https://github.com/icuisine-pos/fastlane-plugin-coreos"
   spec.license       = "MIT"
 
   spec.files         = Dir["lib/**/*"] + %w(README.md LICENSE)
@@ -18,7 +18,6 @@ Gem::Specification.new do |spec|
   spec.require_paths = ['lib']
 
   spec.add_dependency "net-ssh", "~> 3.2.0"
-  # spec.add_dependency 'your-dependency', '~> 1.0.0'
 
   spec.add_development_dependency 'pry'
   spec.add_development_dependency 'bundler'

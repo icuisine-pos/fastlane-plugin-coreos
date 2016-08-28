@@ -50,7 +50,7 @@ module Fastlane
       end
 
       def self.description
-        "Deploys a docker service to a CoreOS hosts."
+        "Deploy docker services to CoreOS hosts"
       end
 
       def self.authors
