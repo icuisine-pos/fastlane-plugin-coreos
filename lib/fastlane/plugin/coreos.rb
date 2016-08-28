@@ -1,4 +1,7 @@
 require 'fastlane/plugin/coreos/version'
+require 'net/ssh'
+require 'erb'
+require 'tempfile'
 
 module Fastlane
   module Coreos

@@ -1,0 +1,27 @@
+[Unit]
+Description=api.icuisine.eu
+Requires=docker.service
+Requires=network.target
+
+[Service]
+ExecStartPre=-/usr/bin/docker kill server
+ExecStartPre=-/usr/bin/docker rm server
+
+ExecStart=/usr/bin/docker run \
+  --net="host" \
+  --name server \
+  <%= @params[:image] %> \
+  java -Duser.timezone=GMT -Dfile.encoding=UTF-8 -Dconfig.resource=production.conf -Dhttp.netty.maxInitialLineLength=19000 -jar /app/server.jar
+
+ExecStartPost=/usr/bin/docker run \
+  -e API_KEY=<%= ENV["MAILGUN_API_KEY"] %> \
+  -e DOMAIN=icuisine.eu \
+  -e HOST=server.www \
+  -e SUBJECT=started \
+  sparrowlabs/mailgun
+
+ExecStop=/usr/bin/docker stop server
+Restart=always
+
+[Install]
+WantedBy=multi-user.target

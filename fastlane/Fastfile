@@ -1,3 +1,3 @@
 lane :test do
-  coreos
+  coreos_deploy :host => "www.icuisine.eu", :image => "sparrowlabs/api.icuisine.eu:scala", :service_file => "deployment/server.service.erb"
 end
